@@ -11,13 +11,14 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 // API_KEY
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
     //  Explain things like you're talking to a software professional with 5 years of experience.
     role: "system",
     content:
-        "Explain things about a platform similar to udemy called EduHub that is for students of Cochin University of Science and Technology (CUSAT), made by CUSAT students, for teaching CUSAT students.",
+    //Explain things about a platform similar to udemy called EduHub that is for students of Cochin University of Science and Technology (CUSAT), made by CUSAT students, for teaching CUSAT students.
+        "Speak like a pirate",
 };
 function App() {
     const [typing, setTyping] = useState(false); // initially false
@@ -63,23 +64,28 @@ function App() {
         //role: "system" -> intial message defining HOW we want ChatGPT to talk
 
         const apiRequestBody = {
-            model: "gpt-3.5-turbo",
-            messsages: [systemMessage, ...apiMessages],
-        };
-        await fetch("https://api.openai.com/v1/chat/completions", {
+            "model": "gpt-3.5-turbo",
+            "messsages": [systemMessage, ...apiMessages]
+        }
+
+        await fetch("https://api.openai.com/v1/chat/completions", 
+        {
             method: "POST",
             headers: {
-                Authorization: "Bearer" + API_KEY,
-                "content-Type": "application/json",
+                "Authorization": "Bearer " + API_KEY,
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(apiRequestBody),
-        })
-            .then((data) => {
-                return data.json();
-            })
-            .then((data) => {
-                console.log(data);
-            });
+            body: JSON.stringify(apiRequestBody)
+        }).then((data) => {
+            return data.json();
+        }).then((data) => {
+            console.log(data);
+            setMessages([...chatMessages, {
+                message: data.choices[0].message.content,
+                sender: "ChatGPT"
+            }]);
+            setTyping(false);
+        });
     }
 
     // for className shortcut: div.header + tab
@@ -95,6 +101,7 @@ function App() {
                 <MainContainer>
                     <ChatContainer>
                         <MessageList
+                            scrollBehavior="smooth"
                             typingIndicator={
                                 typing ? (
                                     <TypingIndicator content="Support ChatBot is typing" />
