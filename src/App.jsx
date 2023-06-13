@@ -3,10 +3,6 @@ import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';  //styling for components
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';  
 
-//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
-// New NEw
-const API_KEY = "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";
-
 const systemMessage = { 
   "role": "system", 
   // PROMPT 
@@ -72,7 +68,7 @@ function App() {
     {
       method: "POST",
       headers: {
-        "Authorization": "Bearer " + API_KEY,
+        "Authorization": "Bearer " + import.meta.env.VITE_API_KEY,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(apiRequestBody)
@@ -92,7 +88,7 @@ function App() {
     // for className shortcut: div.header + tab
   return (
     <div className="App">
-      <div style={{ position:"relative", height: "800px", width: "700px"  }}>
+      <div style={{ position:"relative", height: "700px", width: "700px"  }}>
         <MainContainer>
           <ChatContainer>       
             <MessageList 
@@ -110,6 +106,7 @@ function App() {
       </div>
     </div>
   )
+  console.log(process.env.REACT_APP_API_KEY);
 }
 
 export default App
