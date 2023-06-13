@@ -11,7 +11,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 // API_KEY
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = {
     //  Explain things like you're talking to a software professional with 5 years of experience.
