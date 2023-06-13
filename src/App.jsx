@@ -4,7 +4,7 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';  //styling f
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';  
 
 //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
-const API_KEY = "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";
+const API_KEY = "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";
 
 const systemMessage = { 
   "role": "system", 
@@ -17,7 +17,7 @@ const systemMessage = {
 function App() {
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I'm your EduHub chatbot! Ask me anything!",
+      message: "Hello, I'm your EduHub SupportBot! Ask me anything!",
       sentTime: "Just now",
       sender: "EduHub"
     }
@@ -96,7 +96,7 @@ function App() {
           <ChatContainer>       
             <MessageList 
               scrollBehavior="smooth" 
-              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+              typingIndicator={isTyping ? <TypingIndicator content="EduHub SupportBot is typing" /> : null}
             >
               {messages.map((message, i) => {
                 console.log(message)
