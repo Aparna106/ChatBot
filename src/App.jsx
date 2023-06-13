@@ -4,6 +4,7 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';  //styling f
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';  
 
 //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
+// New NEw
 const API_KEY = "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";
 
 const systemMessage = { 
